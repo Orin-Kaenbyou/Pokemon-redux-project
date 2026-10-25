@@ -5,28 +5,28 @@ import { createSlice } from "@reduxjs/toolkit";
 interface PokemonTeamState {
     name:string;
     elementName: string;
-    isSlotEquired: boolean;
+    isSlotTaken: boolean;
 }
 
 const initialState: PokemonTeamState = {
     name:"Pickachu",
     elementName:"Electric",
-    isSlotEquired: true,
+    isSlotTaken: true,
 }
 
 const pokemonTeamSlice = createSlice({
     name:"pokemonTeam",
     initialState,
     reducers: {
-        isSlotEmpty: (state) => {
-            state.isSlotEquired == true;
+        isSlotEquipped: (state) => {
+            state.isSlotTaken = true;
         },
-        isSlotTaken: (state) => {
-            state.isSlotEquired == false;
+        isSlotEmpty: (state) => {
+            state.isSlotTaken = false;
         }
     },
 });
 
-export const { isSlotEmpty, isSlotTaken } = pokemonTeamSlice.actions;
+export const { isSlotEquipped, isSlotEmpty } = pokemonTeamSlice.actions;
 
 export default pokemonTeamSlice.reducer;
