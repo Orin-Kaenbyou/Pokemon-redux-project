@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 // import pokemonTeamReducer from "./features/team/teamSlice"
 import pokemonTeamReducer from "../features/team/teamSlice";
+import filterReducer from "../features/filter/filterSlice";
 
 export const store = configureStore({
     reducer: {
         pokemonTeam: pokemonTeamReducer,
+        filter: filterReducer,
     }
 }) 
 

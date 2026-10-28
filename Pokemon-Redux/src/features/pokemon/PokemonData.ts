@@ -22,3 +22,14 @@ export const pokemons: Pokemon[] =
 {id:5, name:"Gengar", type: "Ghost", img: Gengar},
 {id:6, name:"Snorlax", type: "Normal", img: Snorlax},
 ]
+
+export const typeColors: Record<string, string> = {
+    Electric: "text-yellow-400",
+    Grass: "text-green-400",
+    Fire: "text-red-400",
+    Water: "text-blue-400",
+    Ghost: "text-purple-400",
+    Normal: "text-gray-300",
+}
+
+export const pokemonTypes = [...new Set(pokemons.map((p) => p.type))]
