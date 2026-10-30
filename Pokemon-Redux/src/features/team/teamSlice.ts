@@ -8,10 +8,12 @@ const MAX_TEAM_SIZE = 6;
 
 interface PokemonTeamState {
     memberIds: number[];
+    error: string | null;
 }
 
 const initialState: PokemonTeamState = {
     memberIds: [],
+    error: null,
 };
 
 
@@ -21,11 +23,16 @@ const pokemonTeamSlice = createSlice({
     reducers: {
        addToTeam: (state, action: PayloadAction<number>) =>  {
         if (state.memberIds.includes(action.payload)) return;
-        if (state.memberIds.length >= MAX_TEAM_SIZE) return;
+        if (state.memberIds.length >= MAX_TEAM_SIZE) {
+            state.error = `У команді не може бути більше ${MAX_TEAM_SIZE} покемонів`;
+            return;
+        }
         state.memberIds.push(action.payload);
+        state.error = null;
        },
        removeFromTeam: (state, action: PayloadAction<number>) => {
         state.memberIds = state.memberIds.filter((id) => id !== action.payload);
+        state.error = null;
        }
     },
 });
